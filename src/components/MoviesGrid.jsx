@@ -20,6 +20,9 @@ export default function MoviesGrid() {
     movie.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const [genre, setGenre] = useState("All Genres");
+  const [rating, setRating] = useState("All Ratings");
+
   return (
     <div>
       <input
@@ -29,6 +32,14 @@ export default function MoviesGrid() {
         value={searchTerm}
         onChange={handleSearchChange}
       />
+      <div className="filter-bar">
+        <div className="filter-slot">
+          <label>Genre</label>
+        </div>
+        <div className="filter-slot">
+          <label>Rating</label>
+        </div>
+      </div>
       <div className="movies-grid">
         {filteredMovies.map((movie) => (
           <MovieCard movie={movie} key={movie.id} />
